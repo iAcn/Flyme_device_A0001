@@ -1,0 +1,13 @@
+/board
+/autopatch
+/out
+/history_package
+/other
+/overlay
+
+!/vendor/aosp
+
+/build.sh
+/releasetools.py
+/releasetools.pyc
+/custom_targetfiles.sh
