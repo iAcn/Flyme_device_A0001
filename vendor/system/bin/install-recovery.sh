@@ -1,1 +1,0 @@
-/system/etc/install-recovery.sh

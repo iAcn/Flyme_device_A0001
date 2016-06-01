@@ -5,6 +5,7 @@
 /other
 /overlay
 
+/vendor
 !/vendor/aosp
 
 /build.sh
