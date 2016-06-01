@@ -8,6 +8,7 @@
 !/vendor/aosp
 
 /build.sh
+/workflow.xml
 /releasetools.py
 /releasetools.pyc
 /custom_targetfiles.sh
