@@ -134,7 +134,6 @@ board_remove_apps := vlife-sdk-mx \
                      Map \
                      Life \
                      IflytekSpeechService \
-                     LuckyMoney \
                      LogReport \
                      EBook
 
