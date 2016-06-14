@@ -15,7 +15,8 @@
         Lcom/android/internal/policy/impl/PhoneWindowManager$MyOrientationListener;,
         Lcom/android/internal/policy/impl/PhoneWindowManager$MyWakeGestureListener;,
         Lcom/android/internal/policy/impl/PhoneWindowManager$SettingsObserver;,
-        Lcom/android/internal/policy/impl/PhoneWindowManager$PolicyHandler;
+        Lcom/android/internal/policy/impl/PhoneWindowManager$PolicyHandler;,
+        Lcom/android/internal/policy/impl/PhoneWindowManager$ThreeFingerCallbacks;
     }
 .end annotation
 
@@ -832,6 +833,10 @@
 .field mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
 
 .field mWindowManagerInternal:Landroid/view/WindowManagerInternal;
+
+.field private haveEnableGesture:Z
+
+.field private mThreeFinger:Lcom/android/internal/policy/impl/ThreeFingerListener;
 
 
 # direct methods
@@ -1695,6 +1700,17 @@
     .prologue
     .line 150
     iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mLock:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
+.method static synthetic access$2500(Lcom/android/internal/policy/impl/PhoneWindowManager;)Ljava/lang/Runnable;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/internal/policy/impl/PhoneWindowManager;
+
+    .prologue
+    .line 9
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mScreenshotRunnable:Ljava/lang/Runnable;
 
     return-object v0
 .end method
@@ -14807,6 +14823,8 @@
 
     iput-object v11, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDreamManagerInternal:Landroid/service/dreams/DreamManagerInternal;
 
+    invoke-direct {p0, p1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->initThreeFinger(Landroid/content/Context;)V
+
     .line 1525
     new-instance v11, Lcom/android/internal/policy/impl/PhoneWindowManager$PolicyHandler;
 
@@ -27579,6 +27597,18 @@
     .line 2041
     invoke-direct {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->updateKeyAssignments()V
 
+    const-string v11, "three_finger_gesture"
+
+    const/4 v13, 0x0
+
+    const/4 v14, -0x2
+
+    invoke-static {v5, v11, v13, v14}, Landroid/provider/Settings$System;->getIntForUser(Landroid/content/ContentResolver;Ljava/lang/String;II)I
+
+    move-result v11
+
+    invoke-direct {p0, v11}, Lcom/android/internal/policy/impl/PhoneWindowManager;->enableSwipeThreeFingerGesture(Z)V
+
     .line 2044
     const-string v11, "user_rotation"
 
@@ -28748,4 +28778,78 @@
     move v4, v6
 
     goto :goto_5
+.end method
+
+.method private initThreeFinger(Landroid/content/Context;)V
+    .locals 2
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    .line 39
+    new-instance v0, Lcom/android/internal/policy/impl/ThreeFingerListener;
+
+    new-instance v1, Lcom/android/internal/policy/impl/PhoneWindowManager$ThreeFingerCallbacks;
+
+    invoke-direct {v1, p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$ThreeFingerCallbacks;-><init>(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
+
+    invoke-direct {v0, p1, v1}, Lcom/android/internal/policy/impl/ThreeFingerListener;-><init>(Landroid/content/Context;Lcom/android/internal/policy/impl/ThreeFingerListener$Callbacks;)V
+
+    iput-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mThreeFinger:Lcom/android/internal/policy/impl/ThreeFingerListener;
+
+    .line 40
+    return-void
+.end method
+
+.method private enableSwipeThreeFingerGesture(Z)V
+    .locals 2
+    .param p1, "state"    # Z
+
+    .prologue
+    .line 43
+    if-eqz p1, :cond_2
+
+    .line 44
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->haveEnableGesture:Z
+
+    if-eqz v0, :cond_1
+
+    .line 54
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 46
+    :cond_1
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->haveEnableGesture:Z
+
+    .line 47
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
+
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mThreeFinger:Lcom/android/internal/policy/impl/ThreeFingerListener;
+
+    invoke-interface {v0, v1}, Landroid/view/WindowManagerPolicy$WindowManagerFuncs;->registerPointerEventListener(Landroid/view/WindowManagerPolicy$PointerEventListener;)V
+
+    goto :goto_0
+
+    .line 49
+    :cond_2
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->haveEnableGesture:Z
+
+    if-eqz v0, :cond_0
+
+    .line 51
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->haveEnableGesture:Z
+
+    .line 52
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
+
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mThreeFinger:Lcom/android/internal/policy/impl/ThreeFingerListener;
+
+    invoke-interface {v0, v1}, Landroid/view/WindowManagerPolicy$WindowManagerFuncs;->unregisterPointerEventListener(Landroid/view/WindowManagerPolicy$PointerEventListener;)V
+
+    goto :goto_0
 .end method
