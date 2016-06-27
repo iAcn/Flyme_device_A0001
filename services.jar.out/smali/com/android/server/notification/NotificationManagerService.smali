@@ -128,6 +128,12 @@
 
 
 # instance fields
+.field mFlymePowerManager:Landroid/os/PowerManager;
+
+.field mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
+
+.field mFlymeWakeUpScreenRunnable:Ljava/lang/Runnable;
+
 .field private mActiveMedia:Z
 
 .field private mAdjustableNotificationLedBrightness:Z
@@ -9681,6 +9687,8 @@
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2, v3}, Lcom/android/server/notification/NotificationManagerService;->publishLocalService(Ljava/lang/Class;Ljava/lang/Object;)V
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService$FlymeInjector;->initFlymeExtraFields(Lcom/android/server/notification/NotificationManagerService;)V
 
     .line 1253
     return-void
