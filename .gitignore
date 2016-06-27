@@ -2,7 +2,6 @@
 /autopatch
 /out
 /history_package
-/other
 
 /vendor
 !/vendor/aosp
@@ -11,4 +10,3 @@
 /workflow.xml
 /releasetools.py
 /releasetools.pyc
-/custom_targetfiles.sh
