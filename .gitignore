@@ -3,7 +3,6 @@
 /out
 /history_package
 /other
-/overlay
 
 /vendor
 !/vendor/aosp
