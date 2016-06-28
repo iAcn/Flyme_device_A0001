@@ -134,6 +134,7 @@ board_remove_apps := vlife-sdk-mx \
                      Map \
                      Life \
                      IflytekSpeechService \
+                     VoiceAssistant \
                      LogReport \
                      EBook
 
