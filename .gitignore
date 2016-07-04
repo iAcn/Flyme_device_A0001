@@ -6,7 +6,6 @@
 /vendor
 !/vendor/aosp
 
-/build.sh
 /workflow.xml
 /releasetools.py
 /releasetools.pyc
