@@ -2,6 +2,7 @@
 /autopatch
 /out
 /history_package
+/Flyme_Done
 
 /vendor
 !/vendor/aosp

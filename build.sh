@@ -41,7 +41,7 @@ function makeOTA() {
         Y|y|YES|yes)
         echo ">>> 编译OTA包"
 		
-        ../../build/tools/releasetools/ota_from_target_files -k ../../build/security/testkey -i history_package/last_target_files.zip out/target_files.zip out/OTA_Flyme_A0001_$versionName.zip
+        ../../build/tools/releasetools/ota_from_target_files -k ../../build/security/testkey -i history_package/last_target_files.zip out/target_files.zip out/OTA_Flyme_A0001_$versionName
         cleanCache
 
         echo "<<< OTA包编译完成"
@@ -54,7 +54,7 @@ function cleanCache(){
     if [ -e out/Flyme*.zip ];then
         rm -rf history_package
         mkdir history_package
-        mkdir Flyme_Complete
+        mkdir Flyme_Done
 
         mv out/target_files.zip history_package
         mv out/Flyme*.zip Flyme_Complete
