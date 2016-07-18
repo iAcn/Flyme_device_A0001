@@ -7,7 +7,7 @@
 # The default value is base.
 # Support values: base, base_cm, base_mt6592 and other devices in the future.
 #-----------------------------------------------------------------------------
-#BASE := base_cm
+BASE := base_cm
 
 ##############################################################################
 # The value is used for resource adapter with the aapt tool.
@@ -40,49 +40,25 @@ vendor_modify_images := boot
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-vendor_remove_dirs := usr/srec \
-                      vendor/pittpatt \
-                      addon.d \
-		      tts \
-		      bin/.ext \
-                      media/audio
+vendor_remove_dirs := addon.d tts media/audio
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
 # The default value is nothing.
 # You can configure the file name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-vendor_remove_files := lib/libchrome.2214.89.so \
-		       recovery-from-boot.bak \
-		       etc/recovery-resource.dat \
-		       etc/NOTICE.html.gz \
-		       etc/permissions/com.google.widevine.software.drm.xml \
-		       etc/CHANGELOG-CM.txt \
-		       etc/.installed_su_daemon \
-		       etc/init.d/00banner \
-		       etc/init.d/99SuperSUDaemon \
-		       etc/install-recovery.sh \
-		       bin/bugreport \
-		       bin/install-recovery_original.sh \
-		       lib/libsupol.so \
-		       framework/com.google.widevine.software.drm.jar
+vendor_remove_files := recovery-from-boot.bak etc/recovery-resource.dat etc/NOTICE.html.gz \
+		       etc/permissions/com.google.widevine.software.drm.xml etc/CHANGELOG-CM.txt \
+		       etc/init.d/00banner bin/bugreport framework/com.google.widevine.software.drm.jar
 
 ##############################################################################
 # The value decides the vendor apk which you want to save in the vendor directory for the ota package.
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/pri-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth \
-		     NfcNci \
-		     KeyChain \
-		     Tag \
-		     UserDictionaryProvider \
-		     BackupRestoreConfirmation \
-		     FusedLocation \
-		     ExternalStorageProvider \
-		     InputDevices \
-		     ProxyHandler \
-		     DefaultContainerService
+vendor_saved_apps := Bluetooth NfcNci KeyChain Tag UserDictionaryProvider BackupRestoreConfirmation \
+		     FusedLocation ExternalStorageProvider InputDevices ProxyHandler \
+		     DefaultContainerService TimeService qcrilmsgtunnel
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -100,11 +76,7 @@ vendor_saved_apps := Bluetooth \
 # You need to decode android.policy.jar to the project directory (use apktool d android.policy.jar) first,
 # and then you can make it by:   make android.policy
 #-----------------------------------------------------------------------------
-vendor_modify_jars := android.policy \
-		      framework \
-		      services \
-		      telephony-common \
-		      wifi-service
+vendor_modify_jars := android.policy framework services telephony-common wifi-service
 
 ##############################################################################
 # The value decides which board system directory you want to save.
@@ -119,24 +91,16 @@ vendor_modify_jars := android.policy \
 # You can configure the board system file path which relative to the system directory in the board release.
 # You should add "lib64/libwebviewchromium.so" for 64 bit system.
 #-----------------------------------------------------------------------------
-board_saved_files := lib/libwebviewchromium.so \
-                     bin/bootanimation \
-                     bin/shutdownanimation \
-                     media/bootanimation.zip
+board_saved_files := lib/libwebviewchromium.so bin/bootanimation \
+                     bin/shutdownanimation media/bootanimation.zip
                         
 ##############################################################################
 # The value decides which board system apk you want to remove.
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-board_remove_apps := vlife-sdk-mx \
-                     PicoTts \
-                     Map \
-                     Life \
-                     IflytekSpeechService \
-                     VoiceAssistant \
-                     LogReport \
-                     EBook
+board_remove_apps := vlife-sdk-mx PicoTts Map Life IflytekSpeechService \
+                     VoiceAssistant LogReport EBook
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
@@ -148,8 +112,7 @@ board_remove_apps := vlife-sdk-mx \
 # The command idtoname how to use: first use "apktool d source/system/framework/framework-res.apk other/TMP/framework-res",
 # and then use "idtoname other/TMP/framework-res/res/values/public_master.xml XXXX/smali"(XXXX is the directory where you decode board system apk).
 #-----------------------------------------------------------------------------
-board_modify_apps := TeleService \
-                     SystemUI
+board_modify_apps := SystemUI Telecom TeleService
 
 ##############################################################################
 # The value decides which jar you want to modify, when the jar is based on the board framework jar.
