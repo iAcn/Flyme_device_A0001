@@ -4,9 +4,6 @@
 /history_package
 /Flyme_Done
 
-/vendor
-!/vendor/aosp
-
 /workflow.xml
 /releasetools.py
 /releasetools.pyc
