@@ -56,8 +56,8 @@ vendor_remove_files := recovery-from-boot.bak etc/recovery-resource.dat etc/NOTI
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/pri-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth NfcNci KeyChain Tag UserDictionaryProvider BackupRestoreConfirmation \
-		     FusedLocation ExternalStorageProvider InputDevices ProxyHandler \
+vendor_saved_apps := Bluetooth NfcNci KeyChain Tag FusedLocation \
+		     ExternalStorageProvider InputDevices ProxyHandler \
 		     DefaultContainerService TimeService qcrilmsgtunnel
 
 ##############################################################################
@@ -100,7 +100,8 @@ board_saved_files := lib/libwebviewchromium.so bin/bootanimation \
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
 board_remove_apps := vlife-sdk-mx PicoTts Map Life IflytekSpeechService \
-                     VoiceAssistant LogReport EBook
+                     VoiceAssistant LogReport EBook HTMLViewer PrintSpooler \
+                     Reader Shell SharedStorageBackup BackupRestoreConfirmation
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
