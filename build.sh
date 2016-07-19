@@ -57,8 +57,8 @@ function cleanCache(){
         mkdir Flyme_Done
 
         mv out/target_files.zip history_package
-        mv out/Flyme*.zip Flyme_Complete
-        mv out/OTA*.zip Flyme_Complete
+        mv out/Flyme*.zip Flyme_Done
+        mv out/OTA*.zip Flyme_Done
 
         mv history_package/target_files.zip history_package/last_target_files.zip
     fi
