@@ -851,7 +851,7 @@
 
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
-    const v1, 0x103000d
+    sget v1, Lcom/flyme/internal/R$style;->Theme_Flyme_Light_AccessControl:I
 
     iput v1, v0, Landroid/content/pm/ActivityInfo;->theme:I
 
