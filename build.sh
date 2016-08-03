@@ -22,7 +22,7 @@ function makeFull() {
         beforeName=$(basename flyme*.zip)
         versionName=${beforeName##*_}
 		
-        mv flyme*.zip Flyme_A0001_Leon_$versionName
+        mv flyme*.zip Flyme_A0001_iAcn_$versionName
         mv target*.zip target_files.zip
 
         cd ..	
