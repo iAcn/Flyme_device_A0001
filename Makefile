@@ -101,7 +101,7 @@ board_saved_files := lib/libwebviewchromium.so bin/bootanimation \
 #-----------------------------------------------------------------------------
 board_remove_apps := vlife-sdk-mx PicoTts Map Life IflytekSpeechService \
                      VoiceAssistant LogReport EBook HTMLViewer PrintSpooler \
-                     Reader Shell SharedStorageBackup BackupRestoreConfirmation
+                     Reader Shell SharedStorageBackup BackupRestoreConfirmation Camera
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
