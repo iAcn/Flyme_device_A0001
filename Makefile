@@ -181,9 +181,9 @@ USE_ASSERTIONS_IN_UPDATER_SCRIPT := false
 ##############################################################################
 # Defines whether generates a block-based OTA, system.img.dat in DAT format will be produced.
 # Will fall back to a file-based OTA if the target_files is older and doesn't support block-based OTAs.
-# Default: false
+# Default: true
 #-----------------------------------------------------------------------------
-#PRODUCE_BLOCK_BASED_OTA := true
+PRODUCE_BLOCK_BASED_OTA := false
 
 
 include $(PORT_BUILD)/main.mk
